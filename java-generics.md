@@ -31,7 +31,7 @@ public class GenericClass<T> {
 ### 泛型接口
 定义泛型接口的语法与泛型类基本相同。
 ```
-interface GenericInterface<T> {
+public interface GenericInterface<T> {
     T get();
 }
 
@@ -42,3 +42,23 @@ class SomeImplements implements GenericInterface<Double> {
 }
 ```
 如上例，在实现接口时只需指定具体的参数类型，即可泛化出支持不同数据类型的接口类型。
+
+### 泛型方法
+泛型方法可以存在于非泛型类中。即其可以独立于所在类单独实现泛化。
+```
+public class OrdinaryClass {
+    public <T> void genericMethod(T arg) {
+        System.out.println(arg.getClass().getName());
+    }
+
+    public static void main(String[] args) {
+        OrdinaryClass ordinary = new OrdinaryClass();
+        ordinary.genericMethod("");
+        ordinary.genericMethod(1);
+    }
+}/* Output:
+java.lang.String
+java.lang.Integer
+*///:~
+```
+上例中值得注意的时，当普通类型作为实参传入时，会自动包装为对应的类，如例子中int型参数自动包装为Interger类。
