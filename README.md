@@ -1,8 +1,6 @@
 ## 文章列表
 
-Email: mrchenbo@qq.com
-
-### [测试文章](https://chenbooo.github.io/test)
+## Email: mrchenbo@qq.com
 
 ### [understanding-convolutions](https://chenbooo.github.io/understanding-convolutions)
 
