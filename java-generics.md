@@ -26,4 +26,19 @@ public class GenericClass<T> {
     }
 }
 ```
-其中T只是类型参数的占位符，并无特别含义，可以用R之类其他名称代替。
+其中T只是类型参数的占位符，并无特别含义，可以用其他任何满足Java变量名称命名规则的名称代替。使用泛型类时，其类型参数需要在构造类对象时指定，如以上示例所示，在实例化GenericClass对象时，指定其类型参数为String。以此GenericClass成为一个泛型类，其可以作用于任何类型。
+
+### 泛型接口
+定义泛型接口的语法与泛型类基本相同。
+```
+interface GenericInterface<T> {
+    T get();
+}
+
+class SomeImplements implements GenericInterface<Double> {
+    public Double get() {
+        return 0D;
+    }
+}
+```
+如上例，在实现接口时只需指定具体的参数类型，即可泛化出支持不同数据类型的接口类型。
