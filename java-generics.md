@@ -14,7 +14,7 @@
 
 ### 泛型类
 可以使用类型参数来实现类的泛型。如下：
-'''
+```
 public class GenericClass<T> {
     private T field;
     public GenericClass(T field) { this.field = field;}
@@ -25,5 +25,5 @@ public class GenericClass<T> {
         System.out.println(context);
     }
 }
-'''
+```
 其中T只是类型参数的占位符，并无特别含义，可以用R之类其他名称代替。
