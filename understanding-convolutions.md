@@ -23,11 +23,11 @@
 
 让我们从具体的例子来理解。我们想要两次抛球总滚动距离为3。如果第一次抛球`a=2`，那么第二次抛球需要滚动`b=1`才能达到我们的要求。其出现概率为`f(2)⋅g(1)`。
 
-![](/image/understanding_convolutions/ProbConv-split-21.png)
+![Image](/image/understanding_convolutions/ProbConv-split-21.png)
 
 值得注意的是，以上不是唯一可以达到总距离为3的组合。球可以第一次滚动1，第二次滚动2；或者第一次滚动0，第二次滚动3；或者其他任意`a`和`b`的组合，只要满足`a+b=3`即可。
 
-![](/image/understanding_convolutions/ProbConv-splits-12-03.png)
+![Image](/image/understanding_convolutions/ProbConv-splits-12-03.png)
 
 其对应的概率依次为`f(1)⋅g(2)`,` f(0)⋅g(3)`等等。
 
@@ -37,25 +37,25 @@
 
 我们已经知道对每一个满足`a+b=c`的组合，其概率为`f(a)⋅g(b)`。所以通过将所有满足`a+b=c`的组合的发生概率相加，我们就能得到两次抛球总的滚落距离为`c`的概率为：
 
-![](/image/understanding_convolutions/f1.png)
+![Image](/image/understanding_convolutions/f1.png)
 
 结果是，我们正在进行一个卷积计算！更确切的说，计算`c`点，函数`f`和`g`的卷积定义如下：
 
-![](/image/understanding_convolutions/f2.png)
+![Image](/image/understanding_convolutions/f2.png)
 
 如果我们取`b=c−a`，那么可以得到：
 
-![](/image/understanding_convolutions/f3.png)
+![Image](/image/understanding_convolutions/f3.png)
 
 这就是卷积的标准定义<a href="#comments2"><sup>[2]</sup></a>。
 
 为了使概念更加具体。我们从球可能的落点来思考。在第一次扔球之后，球会落在一个中间位置`a`，概率为`f(a)`。而如果球第一次落在`a`，那么它就有`g(c−a)`的概率最后落在位置`c`。
 
-![](/image/understanding_convolutions/ProbConv-OnePath.png)
+![Image](/image/understanding_convolutions/ProbConv-OnePath.png)
 
 为了计算它的卷积，我们需要考虑所有的中间位置。
 
-![](/image/understanding_convolutions/ProbConv-SumPaths.png)
+![Image](/image/understanding_convolutions/ProbConv-SumPaths.png)
 
 ### 图解卷积
 
@@ -63,17 +63,17 @@
 
 首先，很容易观察的是，假设一个球从起点滚动距离`x`的概率为f(x)，那么球再从终点滚落回原本的起点的概率则为`f(−x)`。
 
-![](/image/understanding_convolutions/ProbConv-Reverse.png)
+![Image](/image/understanding_convolutions/ProbConv-Reverse.png)
 
 如果我们已经知道第二次扔球后球落在位置`c`，那么球在之前一次落下时停在位置`a`的概率是多大呢？
 
-![](/image/understanding_convolutions/ProbConv-BackProb.png)
+![Image](/image/understanding_convolutions/ProbConv-BackProb.png)
 
 所以之前一次落在位置`a`的概率是`g(−(a−c))=g(c−a)`。
 
 现在，考虑球最终停在位置`c`，所对应的每一个可能的中间位置的概率。我们已经知道球第一次落在位置`a`的概率为`f(a)`，也知道，如果最终落在位置`c`时，其前一次落在位置`a`的概率为`g(c−a)`
 
-![](/image/understanding_convolutions/ProbConv-Intermediate.png)
+![Image](/image/understanding_convolutions/ProbConv-Intermediate.png)
 
 将所有可能的`a`加起来，我们就得到了卷积。
 
@@ -81,17 +81,17 @@
 
 例如，我们可以发现在上下的分布对齐时，其卷积达到最大值。
 
-![](/image/understanding_convolutions/ProbConv-Intermediate-Align.png)
+![Image](/image/understanding_convolutions/ProbConv-Intermediate-Align.png)
 
 当分布之间相交减小时，其卷积值收缩。
 
-![](/image/understanding_convolutions/ProbConv-Intermediate-Sep.png)
+![Image](/image/understanding_convolutions/ProbConv-Intermediate-Sep.png)
 
 使用该技巧制作动画，可以通过可视化的方式直观的理解卷积。
 
 下图，是我们对两个矩形窗函数的可视化卷积计算：
 
-![](/image/understanding_convolutions/Wiki-BoxConvAnim.gif)
+![Image](/image/understanding_convolutions/Wiki-BoxConvAnim.gif)
 
 有了上面的认识，许多事件就变的更直观了。
 
@@ -103,35 +103,35 @@
 
 仍然以抛球为例。这次我们考虑球落下的位置不是在一维的线上，而是在二维平面上。
 
-![](/image/understanding_convolutions/ProbConv-TwoDim.png)
+![Image](/image/understanding_convolutions/ProbConv-TwoDim.png)
 
 卷积的计算与之前完全相同：
 
-![](/image/understanding_convolutions/f4.png)
+![Image](/image/understanding_convolutions/f4.png)
 
 唯一不同的是，现在`a`,`b`和`c`变成了向量，所以更清楚的描述变为：
 
-![](/image/understanding_convolutions/f5.png)
+![Image](/image/understanding_convolutions/f5.png)
 
 或者其标准的定义表达式：
 
-![](/image/understanding_convolutions/f6.png)
+![Image](/image/understanding_convolutions/f6.png)
 
 与一维卷积相同，我们将二维卷积视为一个函数在另一个函数之上滑动，然后相乘、相加。
 
 二维卷积一个常见的应用是图像处理。我们可以将图像视作二维函数。许多重要的图像转换函数使用卷积，通过将图片与一个很小的，本地的核函数做卷积。
 
-![](/image/understanding_convolutions/RiverTrain-ImageConvDiagram.png)
+![Image](/image/understanding_convolutions/RiverTrain-ImageConvDiagram.png)
 
 核依次滑过图像的每一个位置，并且对其覆盖的像素进行加权求和，其结果作为新像素的值。
 
 例如，通过取3x3内所有像素的平均值，我们可以模糊一张图片。为了实现该效果，我们的核函数只需要每个像素取值为1/9即可。
 
-![](/image/understanding_convolutions/Gimp-Blur.png)
+![Image](/image/understanding_convolutions/Gimp-Blur.png)
 
 通过取相邻两像素为-1和1，其他像素取0，我们可以用其检测出图中的边界。其原理是，通过与核函数做卷积，我们得到所有相邻像素之间的差值。当相邻像素变化很小时，其差值约等于零。而对于图中的边界，其相邻像素的值在其边界的垂直方向上差值很大。
 
-![](/image/understanding_convolutions/Gimp-Edge.png)
+![Image](/image/understanding_convolutions/Gimp-Edge.png)
 
 在gimp文档中还有更多关于图像处理的[例子][example]
 
@@ -141,7 +141,7 @@
 
 以一维的卷积层为例，其输入` {xn}`，输出为`{yn}`，如在上一篇[文章][eassay]中所述：
 
-![](/image/understanding_convolutions/Conv-9-Conv2-XY.png)
+![Image](/image/understanding_convolutions/Conv-9-Conv2-XY.png)
 
 如所看到的，我们可以将输出用输入描述为：
 <center>yn=A(xn,xn+1,...)</center>
@@ -164,7 +164,7 @@
 
 回到卷积层，因为存在许多相同神经元的拷贝，所以许多权重值出现在多神经元中。
 
-![](/image/understanding_convolutions/Conv-9-Conv2-XY-W.png)
+![Image](/image/understanding_convolutions/Conv-9-Conv2-XY-W.png)
 
 其对应与等式：
 <center>y0=σ(W0x0+W1x1−b)</center>
@@ -172,17 +172,17 @@
 
 所以，通常情况下，一个权重矩阵以不同的权重将每一个输入与神经元相连：
 
-![](/image/understanding_convolutions/f7.png)
+![Image](/image/understanding_convolutions/f7.png)
 
 一个如上所示的卷积层权重矩阵中，相同的权值会出现在许多位置。而且因为神经元没有连接到许多可能的输入，所以其中有很多的零。
 
-![](/image/understanding_convolutions/f8.png)
+![Image](/image/understanding_convolutions/f8.png)
 
 与上面的矩阵相乘等同于与` [...0,w1,w0,0...]`做卷积。滑动到不同位置的功能相当于在那些位置上具有神经元。
 
 对于二维卷积层是什么情况呢？
 
-![](/image/understanding_convolutions/Conv2-5x5-Conv2-XY.png)
+![Image](/image/understanding_convolutions/Conv2-5x5-Conv2-XY.png)
 
 二维卷积层的布线对应于二维卷积。
 
@@ -215,11 +215,11 @@
 
 例如，卷积满足交换律，即`f∗g=g∗f`,因为：
 
-![](/image/understanding_convolutions/f9.png)
+![Image](/image/understanding_convolutions/f9.png)
 
 卷积也满足结合律，即`(f∗g)∗h=f∗(g∗h)(f∗g)∗h=f∗(g∗h)`，因为：
 
-![](/image/understanding_convolutions/f10.png)
+![Image](/image/understanding_convolutions/f10.png)
 
 <a name="comments3"></a>[3].此处还有偏差，这是神经元是否触发的“门槛”，但是它更简单，我不想混淆这一节而去谈论它。
 
