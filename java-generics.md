@@ -62,3 +62,17 @@ java.lang.Integer
 *///:~
 ```
 上例中值得注意的是，当普通类型作为实参传入时，会自动包装为对应的类，如例子中int型参数自动包装为Interger类；泛型方法的类型参数位于其返回值之前。
+### 泛型引起的问题
+在Java中，是通过消除参数的类型信息来实现泛型的，所以当泛型的操作需要具体的类型信息时需要额外提供类型信息。
+```
+class Erased<T> {
+    private static final int SIZE = 100;
+    public static void f(Object arg){
+        if(arg instanceof T){}              //Error
+        T var = new T();                    //Error
+        T[] array = new T[SIZE];            //Error
+        T[] array = (T)new Object[SIZE];    //Error
+    }
+}
+```
+解决这个问题的一个方案是，可以为泛型提供额外的类型参数--Class<T>,这样可以调用Class提供的接口来实现创建对象等操作。
