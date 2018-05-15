@@ -50,7 +50,12 @@ public class Main {
 ```
 
 3.编译
+```
 javac --module-source-path src -d out src/test.module/test/module/Main.java src/test.module/module-info.java
+```
 
 4.运行
+```
 java --module-path out --module test.module/test.module.Main
+```
+上面出现的新命令选项--module-source-path，--module-path非常类似于之前版本中的-sourcepath和-classpath。
