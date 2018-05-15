@@ -58,4 +58,8 @@ javac --module-source-path src -d out src/test.module/test/module/Main.java src/
 ```
 java --module-path out --module test.module/test.module.Main
 ```
-上面出现的新命令选项--module-source-path，--module-path非常类似于之前版本中的-sourcepath和-classpath。
+上面出现的新命令选项--module-source-path，--module-path非常类似于之前版本中的-sourcepath和-classpath
+
+module-source-path:告知编译器模块对应的源代码位置。
+
+module-path：告知编译器/运行时编译好的模块所在位置，以便用于编译或者运行模块。
