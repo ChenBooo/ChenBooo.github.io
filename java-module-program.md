@@ -31,3 +31,26 @@ NoClassDefFoundError.
 ```
 *注意，上示的目录结构中，模块根目录名与包名并不要求相同，模块根目录名即为模块名，其只需要满足java命名规则，可为模块的唯一标识即可，推荐使用包的命名
 约定，使用域名反转的格式。
+
+module-info.java内容如下：
+``` 
+module test.module {
+}
+```
+module-info.java为模块定义文件，其文件名不能更改。
+
+Main.java
+```
+package test.module;
+public class Main {
+    public static void main(String[] args) {
+	System.out.println("Hello World!");
+    }
+}
+```
+
+3.编译
+javac --module-source-path src -d out src/test.module/test/module/Main.java src/test.module/module-info.java
+
+4.运行
+java --module-path out --module test.module/test.module.Main
