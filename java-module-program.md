@@ -67,7 +67,7 @@ module-path：告知编译器/运行时编译好的模块所在位置，以便�
 ## 模块之间的依赖
 在Java9中引入了module，requires，exports关键字，其只在module-info.java中其作用，所以模块其他代码中使用时，并不会被当做关键字处理。
 1. module用于在module-info.java中申明模块名。
-1. requires用于声明本模块所依赖的外部模块，其格式如下：
+2. requires用于声明本模块所依赖的外部模块，其格式如下：
 ```
 module my.module.name {
     requires outer.module1.name;
@@ -75,7 +75,7 @@ module my.module.name {
 }
 ```
 requires后跟依赖的外部模块名，依赖多个外部模块时，可使用多个requires关键字。在添加了requires引入外部模块后，即可使用该模块中exports的包中的类。
-1. exports用于声明本模块允许外部模块使用的包，其格式如下：
+3. exports用于声明本模块允许外部模块使用的包，其格式如下：
 ```
 module my.module.name {
     exports my.export.package1;
