@@ -2,6 +2,8 @@
 
 ### Email: mrchenbo@qq.com
 
-### [Java泛化](java-generics)
+### Java
 
-### [走进卷积](understanding-convolutions)
+- [Java泛化](/java/java-generics)
+
+- [走进卷积](/other/understanding-convolutions)
