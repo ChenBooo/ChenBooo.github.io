@@ -85,3 +85,48 @@ module my.module.name {
 }
 ```
 exports想外界暴露模块中的包，这样未暴露的包中，即使public类也无法被外部使用，增强了模块的封装性。
+
+## 创建Java运行镜像的步骤
+### 工具：jlink
+需要的参数：
+1. 模块路径。jlink将在该路径下寻找所需要的，已经编译好的模块。
+1. 启动模块。程序启动函数所在模块，可以为多个，为多个时用,分割。
+1. 输出路径。指定镜像的输出目录。
+其使用如下：
+```
+jlink --module-path <module-path-locations> --add-modules <starting-module-name> --output <output_location>
+```
+
+如果出现Error: Module java.base not found错误，表示jlink无法找到java.base模块，则手动将模块所在路径添加到--module-path中即可，不同路径间使用:分割（windows中使用;分割）。
+
+创建的镜像目录结构如下：
+```
+image
+├── bin
+├── conf
+├── include
+├── legal
+└── lib
+```
+
+jlink还支持插件，其中
+--compress可以压缩生成的镜像，=0表示不压缩，=1表示字符串共享，即程序中出现的字符串常量都会被去重。=2使用zip压缩。
+
+--include-locales。jlink默认会携带所有已安装的本地信息，如果能确定进程的运行环境，可以通过该命令指定包含的本地信息，如--include-locales=en.也可以有效的降低镜像的大小。该项似乎只能搭配--bind-services一起使用，原因未明。
+
+### 运行镜像
+在输出目录下运行
+```
+bin/java --module <root-module>/<main-class>
+```
+
+## 模块打包
+```
+jar --create --file <out-location>/<out-jar-name> --module-version=<1.0> -C <module-path-locations> .
+```
+--create选项告诉jar工具需要创建一个jar文件。
+-C指定编译好的class文件位置，其值得格式为<folder> <file>。上式命令中<module-path-locations>即代表floder，.表示在floder文件夹下的所有文件都被包含。
+--module-version指定jar文件的版本。
+--file指定输出jar文件名。
+
+当打包包含main方法的模块时，可添加--main-class=<main class>.
