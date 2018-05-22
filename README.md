@@ -4,6 +4,8 @@
 
 ### Java
 
+- [Java模块化编程](/java/java-module-program)
+
 - [Java泛化](/java/java-generics)
 
 ### Other
