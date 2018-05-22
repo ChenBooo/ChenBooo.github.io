@@ -68,6 +68,20 @@ java --module-path out --module test.module/test.module.Main
 
 --module-path：告知编译器/运行时编译好的模块所在位置，以便用于编译或者运行模块。
 
+5.模块打包
+```
+jar --create --file <out-location>/<out-jar-name> --module-version=<1.0> -C <module-path-locations> .
+```
+--create选项告诉jar工具需要创建一个jar文件。
+
+-C指定编译好的class文件位置，其值格式为```<folder> <file>```。上式命令中```<module-path-locations>```即代表floder，点.表示在floder文件夹下的所有文件都被包含。
+	
+--module-version指定jar文件的版本。
+
+--file指定输出jar文件名。
+
+当打包包含main方法的模块时，可添加--main-class=<main class>.
+
 ## 模块之间的依赖
 在Java9中引入了module，requires，exports关键字，其只在module-info.java中起作用，所以模块其他代码中使用时，并不会被当做关键字处理。
 1. module用于在module-info.java中申明模块名。
@@ -116,10 +130,11 @@ image
 └── lib
 ```
 
-jlink还支持插件，其中
+jlink还支持插件，其中：
+
 --compress可以压缩生成的镜像，=0表示不压缩，=1表示字符串共享，即程序中出现的字符串常量都会被去重。=2使用zip压缩。
 
---include-locales。jlink默认会携带所有已安装的本地信息，如果能确定进程的运行环境，可以通过该命令指定包含的本地信息，如--include-locales=en.也可以有效的降低镜像的大小。该项似乎只能搭配--bind-services一起使用，原因未明。
+--include-locales。jlink默认会携带所有已安装的本地信息，如果能确定进程的运行环境，可以通过该命令指定包含的本地信息，如--include-locales=en.也可以有效的降低镜像的大小。该选项似乎只能搭配--bind-services一起使用，原因未明。
 
 ### 运行镜像
 在输出目录下运行
@@ -127,13 +142,3 @@ jlink还支持插件，其中
 bin/java --module <root-module>/<main-class>
 ```
 
-## 模块打包
-```
-jar --create --file <out-location>/<out-jar-name> --module-version=<1.0> -C <module-path-locations> .
-```
---create选项告诉jar工具需要创建一个jar文件。
--C指定编译好的class文件位置，其值得格式为<folder> <file>。上式命令中<module-path-locations>即代表floder，.表示在floder文件夹下的所有文件都被包含。
---module-version指定jar文件的版本。
---file指定输出jar文件名。
-
-当打包包含main方法的模块时，可添加--main-class=<main class>.
