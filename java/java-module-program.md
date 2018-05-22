@@ -97,8 +97,11 @@ exports向外界暴露模块中的包，这样未暴露的包中，即使public�
 jlink --module-path <module-path-locations> --add-modules <starting-module-name> --output <output_location>
 ```
 其中：
+
 --module-path：指定模块路径。jlink将在该路径下寻找所需要的，已经编译好的模块。
+
 --add-modules：指定启动模块依赖扫描开始模块。可以为多个，为多个时用,分割。通过起点模块迭代扫描模块requires的模块，从而获得整个依赖拓扑。从而获知镜像应包含哪些模块。
+
 --output：指定输出路径。指定镜像的输出目录。
 
 如果出现Error: Module java.base not found错误，表示jlink无法找到java.base模块，则手动将模块所在路径添加到--module-path中即可，不同路径间使用:分割（windows中使用;分割）。
