@@ -8,7 +8,7 @@
 
 ## 单模块
 请下载最新版的IntelliJ。
-1. 首先创建一个Maven工程。其目录结构如下：
+1.首先创建一个Maven工程。其目录结构如下：
 ```
 ├── modules.iml
 ├── pom.xml
@@ -20,13 +20,13 @@
         └── java
 ```
 
-2. 按照Maven代码组织约定，以src/main/java作为源代码根目录。在src/main/java上右键选择*New - module-info.java*。如果module-info.java选项没有出现在弹窗中，则在src/main/java上右键选择*Open Module Settings*，在*Language level*中，将默认的的Java5修改为Java9，即可激活选项。
+2.按照Maven代码组织约定，以src/main/java作为源代码根目录。在src/main/java上右键选择*New - module-info.java*。如果module-info.java选项没有出现在弹窗中，则在src/main/java上右键选择*Open Module Settings*，在*Language level*中，将默认的的Java5修改为Java9，即可激活选项。
 
-3. 创建*module-info.java*并且将模块命名为*my.modules.one*。
+3.创建*module-info.java*并且将模块命名为*my.modules.one*。
 
-4. 在*src/main/java*右键选择*New - Package*创建包*my.modules.one*.
+4.在*src/main/java*右键选择*New - Package*创建包*my.modules.one*.
 
-5. 在上面创建的包中，右键选择*New - Java Class*创建*OneModule.java*。内容如下：
+5.在上面创建的包中，右键选择*New - Java Class*创建*OneModule.java*。内容如下：
 
 ```
 package my.modules.one;
@@ -38,9 +38,9 @@ public class OneModule {
 }
 ```
 
-6. 通过*View - Tool Windows - Maven Projects*打开Maven Projects工具面板。在Lifecycle选项中选择clean，然后右键install，选择*Create 'one[install]'...*，这将会打开*Create Run/Debug Configurations*窗口 —— 直接选择*OK*。然后在Maven Projects面板中会出现新项目*Run Configurations*，其中保存了刚才创建的运行配置信息。
+6.通过*View - Tool Windows - Maven Projects*打开Maven Projects工具面板。在Lifecycle选项中选择clean，然后右键install，选择*Create 'one[install]'...*，这将会打开*Create Run/Debug Configurations*窗口 —— 直接选择*OK*。然后在Maven Projects面板中会出现新项目*Run Configurations*，其中保存了刚才创建的运行配置信息。
 
-7. 修改pom.xml文件。系统生成的pom.xml文件内容如下
+7.修改pom.xml文件。系统生成的pom.xml文件内容如下
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -100,7 +100,7 @@ public class OneModule {
 </project>
 ```
 
-8. 在之前的*Run Configurations*下的*one[install]*右键选择*Run*, 成功后，one-1.0-SNAPSHOT.jar文件出现在*target*目录中。现在可以通过在工程根目录运行：
+8.在之前的*Run Configurations*下的*one[install]*右键选择*Run*, 成功后，one-1.0-SNAPSHOT.jar文件出现在*target*目录中。现在可以通过在工程根目录运行：
 ```
 java --module-path target/one-1.0-SNAPSHOT.jar --module my.modules.one/my.modules.one.OneModule
 ```
