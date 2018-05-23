@@ -8,6 +8,7 @@
 
 ## 单模块
 请下载最新版的IntelliJ。
+
 1.首先创建一个Maven工程。其目录结构如下：
 ```
 ├── modules.iml
@@ -110,7 +111,7 @@ One Modules!
 ```
 
 ## 多模块
-1. 在工程根目录右键选择*New - Module*，然后选择*Next*，设置*Artifactid*为*two*。一下步给模块命名为*my.modules.two*，将模块根目录命名为模块名是一个很好的规范，明确的提示改目录不仅仅是一个Maven module，并且是一个Java module。最后点击*Finish*。创建完成后，目录结构变为：
+1.在工程根目录右键选择*New - Module*，然后选择*Next*，设置*Artifactid*为*two*。一下步给模块命名为*my.modules.two*，将模块根目录命名为模块名是一个很好的规范，明确的提示该目录不仅仅是一个Maven module，并且是一个Java module。最后点击*Finish*。创建完成后，目录结构变为：
 ```
 ├── modules.iml
 ├── my.modules.two
@@ -137,11 +138,11 @@ One Modules!
 ```
 并且*my.modules.two*被IntelliJ自动添加到根pom.xml文件。
 
-2. 在*my.modules.two*模块的源代码根目录*src/main/java*下，右键*New | module-info.java*创建*module-info.java*文件.
+2.在*my.modules.two*模块的源代码根目录*src/main/java*下，右键*New - module-info.java*创建*module-info.java*文件.
 
-3. 在*my.modules.two*模块的源代码根目录*src/main/java*下创建包*my.modules.two*.
+3.在*my.modules.two*模块的源代码根目录*src/main/java*下创建包*my.modules.two*.
 
-3. 创建在创建的包中添加*TwoModule.java*文件，内容如下：
+4.创建在创建的包中添加*TwoModule.java*文件，内容如下：
 ```
 package my.modules.two;
 
@@ -152,9 +153,9 @@ public class TwoModule {
 }
 ```
  
-4. 如之前例子一样，运行*one[install]*编译整个工程。两个模块均被编译成功，并打包为jar文件置于各自的*target*目录下。
+5.如之前例子一样，运行*one[install]*编译整个工程。两个模块均被编译成功，并打包为jar文件置于各自的*target*目录下。
 
-5. 运行新创建的模块，可用一下命令：
+6.运行新创建的模块，可用一下命令：
 ```
 java --module-path my.modules.two/target/two-1.0-SNAPSHOT.jar --module my.modules.two/my.modules.two.TwoModule
 ```
@@ -164,7 +165,7 @@ Two Modules!
 ```
 
 ### 模块间依赖
-1. 按以上步骤，创建新模块*my.modules.three*。完成后目录结构如下(为简略，部分文件已省略)：
+1.按以上步骤，创建新模块*my.modules.three*。完成后目录结构如下(为简略，部分文件已省略)：
 ```
 ├── modules.iml
 ├── my.modules.three
@@ -213,7 +214,7 @@ Two Modules!
     └── one-1.0-SNAPSHOT.jar
 ```
 
-2. 修改模块*my.modules.two*的*TwoModule.java*,如下：
+2.修改模块*my.modules.two*的*TwoModule.java*,如下：
 ```
 package my.modules.two;
 
@@ -228,7 +229,7 @@ public class TwoModule {
 }
 ```
 
-3. 修改*my.modules.two*的*module-info.java*文件，以向外暴露*my.modules.two*包，如下：
+3.修改*my.modules.two*的*module-info.java*文件，以向外暴露*my.modules.two*包，如下：
 ```
 module my.modules.two {
     exports my.modules.two;
@@ -242,7 +243,7 @@ module my.modules.three {
 }
 ```
 
-5. 在*my.modules.three*模块的pom.xml文件中添加对*my.modules.two*模块的依赖，修改后如下：
+5.在*my.modules.three*模块的pom.xml文件中添加对*my.modules.two*模块的依赖，修改后如下：
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -268,7 +269,7 @@ module my.modules.three {
 ```
 *注：步骤3、4、5的依赖关系添加，IntelliJ均提供快捷键，一般是直接在代码中红色字体上按*Alt+Enter*，按弹出窗口中提示操作即可。此处的步骤3、4为添加Java Module依赖关系，步骤5为添加Maven依赖关系。
 
-6. 修改*my.modules.three*模块的*ThreeModule.java*,如下：
+6.修改*my.modules.three*模块的*ThreeModule.java*,如下：
 ```
 package my.modules.three;
 
@@ -283,7 +284,7 @@ public class ThreeModule {
 }
 ```
 
-7. 编译整个工程，然后运行*my.modules.three*，如下：
+7.编译整个工程，然后运行*my.modules.three*，如下：
 ```
 java --module-path my.modules.two/target/two-1.0-SNAPSHOT.jar:my.modules.three/target/three-1.0-SNAPSHOT.jar --module my.modules.three/my.modules.three.ThreeModule
 ```
