@@ -1,12 +1,12 @@
 # Java模块化编程在Intellij和Maven中的使用
 
 ## 概念
-首先要明确Maven Modules, Java Modules, IntelliJ Modules三个不同的概念
-1. Maven Modules:是将工程组织为子工程的概念。在Maven中，用户可以控制每个模块的版本和模块之间的依赖关系。
-2. Java Modules:是Java9引入的新语言特性。用于增强类的封装性。并不提供版本控制等功能。
-3. IntelliJ Modules:是IntelliJ中组织文件的一种方式，在后面的例子中，我们将用其来组织我们的Maven modules。
+首先要明确Maven Modules, Java Modules和IntelliJ Modules三个不同的概念
+- Maven Modules:是将工程组织为子工程的概念。在Maven中，用户可以控制每个模块的版本和模块之间的依赖关系。
+- Java Modules:是Java9引入的新语言特性。用于增强类的封装性。并不提供版本控制等功能。
+- IntelliJ Modules:是IntelliJ中组织文件的一种方式，在后面的例子中，我们将用其来组织我们的Maven modules。
 
-## 单模块例子
+## 单模块
 请下载最新版的IntelliJ。
 1. 首先创建一个Maven工程。其目录结构如下：
 ```
@@ -105,7 +105,7 @@ java --module-path target/one-1.0-SNAPSHOT.jar --module my.modules.one/my.module
 One Modules!
 ```
 
-## 多模块例子
+## 多模块
 1. 在工程根目录右键选择*New - Module*，然后选择*Next*，设置*Artifactid*为*two*。一下步给模块命名为*my.modules.two*，将模块根目录命名为模块名是一个很好的规范，明确的提示改目录不仅仅是一个Maven module，并且是一个Java module。最后点击*Finish*。创建完成后，目录结构变为：
 ```
 ├── modules.iml
