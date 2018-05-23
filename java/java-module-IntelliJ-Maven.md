@@ -37,7 +37,7 @@ public class OneModule {
 }
 ```
 
-6. 通过*View | Tool Windows | Maven Projects*打开Maven Projects工具面板。在Lifecycle选项中选择clean，然后右键install，选择*Create 'one[install]'...*，这将会打开*Create Run/Debug Configurations*窗口 —— 直接选择*OK*。然后在Maven Projects面板中会出现新项目*Run Configurations*，其中保存了刚才创建的运行配置信息。
+6. 通过*View - Tool Windows - Maven Projects*打开Maven Projects工具面板。在Lifecycle选项中选择clean，然后右键install，选择*Create 'one[install]'...*，这将会打开*Create Run/Debug Configurations*窗口 —— 直接选择*OK*。然后在Maven Projects面板中会出现新项目*Run Configurations*，其中保存了刚才创建的运行配置信息。
 
 7. 修改pom.xml文件。系统生成的pom.xml文件内容如下
 ```
