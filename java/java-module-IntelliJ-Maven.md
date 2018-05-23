@@ -20,7 +20,7 @@
         └── java
 ```
 
-2. 按照Maven代码组织约定，以src/main/java作为源代码根目录。在src/main/java上右键选择*New - module-info.java*。如果module-info.java选项没有出现在弹窗中，则在src/main/java上右键选择*Open Module Settings*,在*Language level*中，将默认的的Java5修改为Java9，即可激活选项。
+2. 按照Maven代码组织约定，以src/main/java作为源代码根目录。在src/main/java上右键选择*New|module-info.java*。如果module-info.java选项没有出现在弹窗中，则在src/main/java上右键选择*Open Module Settings*,在*Language level*中，将默认的的Java5修改为Java9，即可激活选项。
 
 3. 创建*module-info.java*并且将模块命名为*my.modules.one*。
 
