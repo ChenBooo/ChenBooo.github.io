@@ -142,7 +142,7 @@ One Modules!
 
 3.在*my.modules.two*模块的源代码根目录*src/main/java*下创建包*my.modules.two*.
 
-4.创建在创建的包中添加*TwoModule.java*文件，内容如下：
+4.在创建的包中添加*TwoModule.java*文件，内容如下：
 ```
 package my.modules.two;
 
@@ -155,7 +155,7 @@ public class TwoModule {
  
 5.如之前例子一样，运行*one[install]*编译整个工程。两个模块均被编译成功，并打包为jar文件置于各自的*target*目录下。
 
-6.运行新创建的模块，可用一下命令：
+6.运行新创建的模块，可用以下命令：
 ```
 java --module-path my.modules.two/target/two-1.0-SNAPSHOT.jar --module my.modules.two/my.modules.two.TwoModule
 ```
@@ -267,7 +267,7 @@ module my.modules.three {
     </dependencies>
 </project>
 ```
-*注：步骤3、4、5的依赖关系添加，IntelliJ均提供快捷键，一般是直接在代码中红色字体上按*Alt+Enter*，按弹出窗口中提示操作即可。此处的步骤3、4为添加Java Module依赖关系，步骤5为添加Maven依赖关系。
+注：步骤3、4、5的依赖关系添加，IntelliJ均提供快捷键，一般是直接在代码中红色字体上按*Alt+Enter*，按弹出窗口中提示操作即可。此处的步骤3、4为添加Java Module依赖关系，步骤5为添加Maven依赖关系。
 
 6.修改*my.modules.three*模块的*ThreeModule.java*,如下：
 ```
@@ -288,14 +288,14 @@ public class ThreeModule {
 ```
 java --module-path my.modules.two/target/two-1.0-SNAPSHOT.jar:my.modules.three/target/three-1.0-SNAPSHOT.jar --module my.modules.three/my.modules.three.ThreeModule
 ```
-因为*my.modules.three*依赖*my.modules.two*,所以运行*my.modules.three*时，需要同时在--module-path下指定两个模块的路径，其运行输出如下：
+因为*my.modules.three*依赖*my.modules.two*，所以运行*my.modules.three*时，需要同时在--module-path下指定两个模块的路径，其运行输出如下：
 ```
 Three Modules!
 Hi, I am Two Modules!
 ```
 
 ## 总结
-在多模块情况下，情况变的比较微妙，如果仔细对比，可以发现从第二个创建的模块开始，其pom.xml文件相较与第一个模块的pom.xml文件，其多了以下内容:
+在多模块情况下，情况变的比较微妙，如果仔细对比，可以发现从第二个创建的模块开始，其pom.xml文件相较与第一个模块的pom.xml文件，多了以下内容:
 ```
 <parent>
     <artifactId>one</artifactId>
@@ -303,7 +303,9 @@ Hi, I am Two Modules!
     <version>1.0-SNAPSHOT</version>
 </parent>
 ```
-即之后创建的模块与第一个模块之间都是父子关系，此处引入一个问题就是子模块可以添加对父模块的依赖，但是如果父模块企图添加对子模块的依赖时，就会编译错误，提示存在环形依赖。这是因为pom存在以上内容时，其实已经引入了子模块对父模块的依赖，所以当添加父模块对子模块的依赖时就形成了环形依赖，如果想要创建是创建的所有模块均处于平等关系，可以去掉<parent>标签。
+即之后创建的模块与第一个模块之间都是父子关系，此处引入一个问题就是子模块可以添加对父模块的依赖，但是如果父模块企图添加对子模块的依赖时，就会编译错误，提示存在环形依赖。
+
+这是因为pom存在以上内容时，其实已经引入了子模块对父模块的依赖，所以当添加父模块对子模块的依赖时就形成了环形依赖，如果想要让所有模块均处于平等关系，可以去掉<parent>标签。
 
 
 
