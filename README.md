@@ -4,6 +4,8 @@
 
 ### Java
 
+- [Java模块化编程在Intellij和Maven中的使用](/java/java-module-IntelliJ-Maven)
+
 - [Java模块化编程](/java/java-module-program)
 
 - [Java泛化](/java/java-generics)
