@@ -4,6 +4,8 @@
 
 ### Java
 
+- [代码迁移至Java9](java/java-migrate-to-java9)
+
 - [Java模块化编程在Intellij和Maven中的使用](/java/java-module-IntelliJ-Maven)
 
 - [Java模块化编程](/java/java-module-program)
