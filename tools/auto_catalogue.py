@@ -19,9 +19,9 @@ for line in content:
         space = "    " * (len(mark) - 1)
         link = "- [{0}](#{0})\n".format(con)
         catalogue.append(space + link)
-        after_content.append("<a name={0}></a>\n".format(con))
+        after_content.append('<a name="{0}"></a>\n'.format(con))
     after_content.append(line)
-    
+
 catalogue.extend(after_content)
 
 out = open(filen.split(".")[0] + "_after.md", 'w', encoding='UTF-8')
