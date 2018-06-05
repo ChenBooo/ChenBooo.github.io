@@ -10,6 +10,7 @@
     - [HEAD方法](#HEAD方法)
     - [POST方法](#POST方法)
 - [结束语](#结束语)
+
 <a name="什么是HTTP"></a>
 # 什么是HTTP
 HTTP全称为Hypertext Transfer Protocol，即超文本传输协议。HTTP是一种用来在万维网传输资源的网络通信协议。一般来说HTTP底层使用TCP/IP协议。
