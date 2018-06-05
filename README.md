@@ -1,8 +1,8 @@
-## 文章列表
+# 文章列表
 
-### Email: mrchenbo@qq.com
+## Email: mrchenbo@qq.com
 
-### Java
+## Java
 
 - [代码迁移至Java9](java/java-migrate-to-java9)
 
@@ -12,6 +12,10 @@
 
 - [Java泛化](/java/java-generics)
 
-### Other
+## Web
+
+- [HTTP简述](/web/http)
+
+## Other
 
 - [走进卷积](/other/understanding-convolutions)
