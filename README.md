@@ -16,6 +16,10 @@
 
 - [HTTP简述](/web/http)
 
+## 分布式
+
+- [ZooKeeper简述](/distributed/zookeeper)
+
 ## Other
 
 - [走进卷积](/other/understanding-convolutions)
