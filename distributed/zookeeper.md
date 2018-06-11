@@ -125,8 +125,9 @@ server.id=host:port:port是集群中的服务器列表。id用于标识对应的
 
 <a name="zookeeper数据模型"></a>
 ## zookeeper数据模型
-zookeeper运行分布式系统通过在一个分级的命名空间中注册数据来实现协调合作。这个命名空间十分类似Unix文件系统。数据注册在zookeeper中称为znode。下图即为多个znode的实例图。
+zookeeper通过在一个分级的命名空间中注册数据来实现协调合作。这个命名空间十分类似Unix文件系统。数据注册在zookeeper中称为znode。下图即为多个znode的实例图：
 ![](/image/zookeeper/znodes.png)
+
 从上图可以看出，znode被组织为层次结构，呈树形，非常类似标准文件系统。上图中：
 - 根节点有一个子节点/zoo，而其有具有三个子节点。
 - zk树中每一个节点由其路径标识，路径由/分割。
