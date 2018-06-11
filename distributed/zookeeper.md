@@ -272,10 +272,10 @@ zk中每个节点都有自己的状态信息，包含以下内容：
 以下给出几个使用Java库连接zk服务的用例，以下是例子中使用的依赖：
 ```
 <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>3.4.10</version>
-        </dependency>
+	<groupId>org.apache.zookeeper</groupId>
+	<artifactId>zookeeper</artifactId>
+	<version>3.4.10</version>
+</dependency>
 ```
 
 <a name="连接zk服务"></a>
@@ -314,7 +314,7 @@ public class HelloZooKeeper {
 
 <a name="实现watch"></a>
 ## 实现watch
-实现一个watch，在节点数据发生变化时，让zk服务通知客户端。以下例子中，将实现两个类DataWatcher和DataUpdater。其中DataWatcher等待zk服务推送NodeDataChange事件。DataUpdater周期性的更新节点数据。
+实现一个watch，在节点数据发生变化时，让zk服务通知客户端。以下例子中，将实现两个类：DataWatcher和DataUpdater。其中DataWatcher等待zk服务推送NodeDataChange事件。DataUpdater周期性的更新节点数据。
 
 以下为DataWatcher.java内容：
 ```
@@ -325,7 +325,7 @@ import org.apache.zookeeper.*;
 import java.io.IOException;
 
 public class DataWatcher implements Watcher, Runnable {
-    private static String hostPort = "192.168.1.62:2181";
+    private static String hostPort = "localhost:2181";
     private static String zooDataPath = "/myData";
     byte[] zooData = null;
     ZooKeeper zk;
@@ -391,7 +391,7 @@ public class DataWatcher implements Watcher, Runnable {
 }
 
 ```
-在DataWatcher构造函数中，我们坚持节点是否存在，如果不存在则创建节点。
+在DataWatcher构造函数中，我们检测节点是否存在，如果不存在则创建节点。
 
 当收到事件通知后，调用printData获取节点数据，注意，在printData中，调用getData时，我们通过设置getData的第二个参数重置了watch。因为每个watch只触发一次，在处理通知时再次注册watch，以保证对事件的持续监听。
 
@@ -408,7 +408,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 public class DataUpdater implements Watcher {
-    private static String hostPort = "192.168.1.62:2181";
+    private static String hostPort = "localhost:2181";
     private static String zooDataPath = "/myData";
     ZooKeeper zk;
 
@@ -446,7 +446,7 @@ public class DataUpdater implements Watcher {
 }
 ```
 
-DataUpdater每5秒钟更新一次节点数据，此处DataUpdater实现Watcher接口，演示了每个watch只会被触发一次。在构造函数中，通过设置ZooKeeper的第三个参数注册了watch，所以在程序启动后，我们会收到一次zk服务的通知，但是由于在process中我们没有再次注册watch，因此，其后不在收到zk服务通知。
+DataUpdater每5秒钟更新一次节点数据，此处DataUpdater实现Watcher接口，演示了每个watch只会被触发一次。在构造函数中，通过设置ZooKeeper的第三个参数注册了watch，所以在程序启动后，我们会收到一次zk服务的通知，但是由于在process中我们没有再次注册watch，因此，其后不再收到zk服务通知。
 
 <a name="成员管理"></a>
 ## 成员管理
