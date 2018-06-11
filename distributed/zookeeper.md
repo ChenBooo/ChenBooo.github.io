@@ -657,7 +657,7 @@ public class ClusterClient implements Watcher, Runnable {
 4. 在当前节点列表中，序号仅次于N的节点上设置watch，exists("/election/<序列号仅小于N的节点>"， true)。
 5. 当收到步骤4中设置的watch事件时，执行getChildren("/election", false)获取所有参与选举的节点。
 6. 节点列表中序列号最小的节点当选为新的主节点。
-7. 修改节点的watch为，序列号仅仅小于自身节点序列号的节点。
+7. 修改节点的watch为序列号仅仅小于自身节点序列号的节点。
 
 <a name="组成员服务"></a>
 ## 组成员服务
