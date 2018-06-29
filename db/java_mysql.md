@@ -1,7 +1,7 @@
 - [Java中使用MySql](#Java中使用MySql)
     - [模型](#模型)
     - [执行过程](#执行过程)
-    - [示例代码](#示例代码)
+    - [示例代码](#示例代码1)
     - [理解ResultSet](#理解ResultSet)
     - [元数据](#元数据)
         - [DatabaseMetaData](#DatabaseMetaData)
@@ -26,7 +26,7 @@ Java中对数据库编程使用三层模型，通过在Java应用与数据库驱
 
 ![](/image/db/executepath.png)
 
-<a name="示例代码"></a>
+<a name="示例代码1"></a>
 ## 示例代码
 ```
 import java.sql.*;
