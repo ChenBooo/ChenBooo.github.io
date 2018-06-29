@@ -1,7 +1,7 @@
 - [Java中使用MySql](#Java中使用MySql)
     - [模型](#模型)
     - [执行过程](#执行过程)
-    - [示例](#示例)
+    - [示例代码](#示例代码)
     - [理解ResultSet](#理解ResultSet)
     - [元数据](#元数据)
         - [DatabaseMetaData](#DatabaseMetaData)
@@ -16,16 +16,18 @@
 <a name="模型"></a>
 ## 模型
 ![](/image/db/model.png)
+
 Java中对数据库编程使用三层模型，通过在Java应用与数据库驱动程序间添加隔离层jdbc,到达解耦，使得切换数据库时，应用代码受到的影响降到最低。
 
 <a name="执行过程"></a>
 ## 执行过程
-java.sql包中包含了大量与数据库操作有关的类，其中DriverManager用于关于数据库驱动，只需将驱动放置在classpath中，DriverManager即可自动加载，通过这种方式，应用层不需要显示的声明使用的具体驱动类，从而替换数据库时，应用层代码不会受到影响。
-通过DriverManager生成Connection对象，改对象用于连接数据库。Connection对象生成Statement对象，用于执行具体的SQL语句，其流程图如下：
+*java.sql*包中包含了大量与数据库操作有关的类，其中DriverManager用于管理数据库驱动，只需将驱动放置在classpath中，DriverManager即可自动加载，通过这种方式，应用层不需要显示的声明使用的具体驱动类，从而替换数据库时，应用层代码不会受到影响。
+通过DriverManager生成Connection对象，该对象用于连接数据库。Connection对象生成Statement对象，用于执行具体的SQL语句，其流程图如下：
+
 ![](/image/db/executepath.png)
 
-<a name="示例"></a>
-## 示例
+<a name="示例代码"></a>
+## 示例代码
 ```
 import java.sql.*;
 
@@ -79,7 +81,9 @@ public class DataBasePlay {
 <a name="理解ResultSet"></a>
 ## 理解ResultSet
 *ResultSet*类用于存储执行SQL的返回结果，可以将其理解为一个二维数据，如下图：
+
 ![](/image/db/resultset.png)
+
 值得注意的是，在返回结果中，首行、首列的下标均为1，下标0，位于首行、列之前的位置。可以通过*ResultSet*提供的API方便的移动游标位置，并获取其中相应的数据。
 
 <a name="元数据"></a>
@@ -216,6 +220,7 @@ public class DataBasePlay {
 <a name="什么是连接池"></a>
 ### 什么是连接池
 连接池是一组数据库连接的缓存。连接池根据需要自动创建与数据库的连接，并提供给一个或多个应用共同使用，其原理如下图：
+
 ![](/image/db/connect_pool.png)
 
 <a name="示例代码"></a>
