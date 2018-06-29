@@ -156,7 +156,7 @@ public class DataBasePlay {
 
 <a name="ResultSetMetaData"></a>
 ### ResultSetMetaData
-从*DatabaseMetaData*类中获得了关于数据库比较恒定的元数据，同样也可以使用*ResultSetMetaData*来获取每次查询的元数据。
+从*DatabaseMetaData*类中获得了关于数据库比较静态的元数据，同样也可以使用*ResultSetMetaData*来获取每次查询的元数据。
 以下为获取列名的示例代码：
 ```
 import java.sql.*;
