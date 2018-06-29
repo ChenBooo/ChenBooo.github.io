@@ -76,7 +76,7 @@ public class DataBasePlay {
     }
 }
 ```
-上例中，在构造函数中，检查classpath中是否有mysql的驱动类*com.mysql.jdbc.Driver*，*connectDB*创建与数据库之间的连接。*executeSQL*通过Statement类来执行SQL语句。
+上例，在构造函数中，检查classpath中是否有mysql的驱动类*com.mysql.jdbc.Driver*，*connectDB*创建与数据库之间的连接。*executeSQL*通过Statement类来执行SQL语句。
 
 <a name="理解ResultSet"></a>
 ## 理解ResultSet
@@ -84,7 +84,7 @@ public class DataBasePlay {
 
 ![](/image/db/resultset.png)
 
-值得注意的是，在返回结果中，首行、首列的下标均为1，下标0，位于首行、列之前的位置。可以通过*ResultSet*提供的API方便的移动游标位置，并获取其中相应的数据。
+值得注意的是，在返回结果中，数据的首行、首列下标均为1。而初始下标0，位于首行、列之前的位置。可以通过*ResultSet*提供的API方便的移动游标位置，并获取其中相应的数据。
 
 <a name="元数据"></a>
 ## 元数据
